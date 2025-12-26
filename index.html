@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Master Tempo Pro - Professional metronome app for iOS with sample-accurate precision, haptic feedback, and beautiful visualizations.">
+    <meta name="description" content="Master Tempo Pro - Professional metronome app for iOS with sample-accurate precision and haptic feedback.">
     <title>Master Tempo Pro - Professional Metronome for iOS</title>
     <style>
         * {
@@ -13,279 +13,393 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #e0e0e0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: #1d1d1f;
+            background: #fff;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Hero Section */
+        /* Navigation */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #6e6e73;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9em;
+        }
+
+        nav a:hover {
+            color: #1d1d1f;
+        }
+
+        /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            max-width: 980px;
+            margin: 80px auto 0;
+            padding: 0 5%;
             text-align: center;
-            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 15px;
+            color: #1d1d1f;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5em;
+            color: #6e6e73;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .hero .description {
+            font-size: 1.1em;
+            color: #6e6e73;
+            max-width: 650px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #0071e3;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0077ed;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #0071e3;
+            border: 1.5px solid #0071e3;
+        }
+
+        .btn-secondary:hover {
+            background: #0071e3;
+            color: white;
+        }
+
+        /* App Preview */
+        .app-preview {
+            max-width: 380px;
+            margin: 0 auto 100px;
             position: relative;
-            overflow: hidden;
         }
 
-        /* Ambient Background */
-        .ambient-glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
-            z-index: 0;
+        .phone-frame {
+            background: #1d1d1f;
+            border-radius: 45px;
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
 
-        .glow-1 {
-            background: #8b5cf6;
-            top: -200px;
-            left: -200px;
-            animation: float 15s ease-in-out infinite;
-        }
-
-        .glow-2 {
-            background: #06b6d4;
-            bottom: -200px;
-            right: -200px;
-            animation: float 20s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(50px, 50px); }
-        }
-
-        .content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-
-        /* App Icon */
-        .app-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-            border-radius: 26px;
+        .screen {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+            border-radius: 35px;
+            aspect-ratio: 9/19.5;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
-            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4);
-            animation: pulse 3s ease-in-out infinite;
+            color: white;
+            font-size: 3em;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(139, 92, 246, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 25px 80px rgba(139, 92, 246, 0.6); }
-        }
-
-        h1 {
-            font-size: 3.5em;
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            font-weight: 900;
-        }
-
-        .tagline {
-            font-size: 1.5em;
-            color: #a0a0a0;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        /* Features Grid */
+        /* Features */
         .features {
+            background: #f5f5f7;
+            padding: 80px 5% 100px;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1d1d1f;
+        }
+
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-            text-align: left;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
         }
 
-        .feature {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+        .feature-item {
+            text-align: center;
         }
 
         .feature-icon {
             font-size: 2.5em;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        .feature h3 {
-            color: #8b5cf6;
+        .feature-item h3 {
             font-size: 1.3em;
-            margin-bottom: 10px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1d1d1f;
         }
 
-        .feature p {
-            color: #c0c0c0;
+        .feature-item p {
+            color: #6e6e73;
+            line-height: 1.5;
             font-size: 0.95em;
         }
 
-        /* Download Button */
-        .download-section {
-            margin: 60px 0;
+        /* Tech Specs */
+        .specs {
+            max-width: 980px;
+            margin: 100px auto;
+            padding: 0 5%;
         }
 
-        .app-store-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-            color: white;
-            padding: 18px 40px;
+        .specs h2 {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .specs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .spec-item {
+            padding: 25px;
+            background: #f5f5f7;
             border-radius: 12px;
-            text-decoration: none;
-            font-size: 1.2em;
+        }
+
+        .spec-title {
             font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+            margin-bottom: 8px;
+            color: #1d1d1f;
         }
 
-        .app-store-badge:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
-        }
-
-        .coming-soon {
-            background: rgba(255, 255, 255, 0.1);
-            color: #a0a0a0;
-            cursor: not-allowed;
-        }
-
-        .coming-soon:hover {
-            transform: none;
-            box-shadow: none;
+        .spec-value {
+            color: #6e6e73;
+            font-size: 0.95em;
         }
 
         /* Footer */
-        .footer {
+        footer {
+            background: #f5f5f7;
+            padding: 40px 5%;
             text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #888;
+            border-top: 1px solid #d2d2d7;
         }
 
-        .footer a {
-            color: #06b6d4;
+        footer a {
+            color: #0071e3;
             text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s ease;
+            margin: 0 20px;
         }
 
-        .footer a:hover {
-            color: #8b5cf6;
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            color: #6e6e73;
+            margin-top: 20px;
+            font-size: 0.85em;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            h1 {
+            .hero h1 {
                 font-size: 2.5em;
             }
 
-            .tagline {
+            .hero .subtitle {
                 font-size: 1.2em;
             }
 
-            .features {
-                grid-template-columns: 1fr;
+            .features h2 {
+                font-size: 2em;
             }
 
-            .app-icon {
-                width: 100px;
-                height: 100px;
-                font-size: 50px;
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin-left: 0;
+                margin-right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="ambient-glow glow-1"></div>
-    <div class="ambient-glow glow-2"></div>
-
-    <div class="hero">
-        <div class="content">
-            <div class="app-icon">🎵</div>
-
-            <h1>Master Tempo Pro</h1>
-            <p class="tagline">Professional Timing & Haptic Beats</p>
-
-            <div class="features">
-                <div class="feature">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Sample-Accurate Precision</h3>
-                    <p>Zero-latency timing powered by advanced DSP technology. Crystal-clear sounds generated in real-time.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">🔊</div>
-                    <h3>4 Studio-Grade Sounds</h3>
-                    <p>Classic beep, Woodblock, Hi-Hat, and Snap. Each optimized for professional practice.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">📳</div>
-                    <h3>Haptic Pulse Feedback</h3>
-                    <p>Feel the beat with Taptic Engine. Perfect for silent practice or loud environments.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Beautiful Visualizations</h3>
-                    <p>Choose between Pulse rings and Waveform displays. Dynamic themes to match your style.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Background Playback</h3>
-                    <p>Keep the beat going while reading sheet music or using other apps.</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">🎛️</div>
-                    <h3>30-240 BPM Range</h3>
-                    <p>Smooth control from slow practice to fast performance tempos.</p>
-                </div>
-            </div>
-
-            <div class="download-section">
-                <a href="#" class="app-store-badge coming-soon">
-                    Coming Soon to the App Store
-                </a>
-            </div>
-
-            <p style="color: #666; font-size: 0.9em; margin-top: 20px;">
-                Master your rhythm with precision timing designed for musicians who demand the best.
-            </p>
+    <!-- Navigation -->
+    <nav>
+        <a href="/" class="logo">Master Tempo Pro</a>
+        <div>
+            <a href="/privacy.html">Privacy</a>
+            <a href="mailto:support@master-tempo.com">Support</a>
         </div>
-    </div>
+    </nav>
 
-    <div class="footer">
-        <p>
-            <a href="/privacy.html">Privacy Policy</a>
-            <a href="mailto:support@master-tempo.com">Contact</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Precision meets simplicity.</h1>
+        <p class="subtitle">The professional metronome for iOS.</p>
+        <p class="description">
+            Master Tempo Pro delivers sample-accurate timing with haptic feedback
+            and beautiful visualizations. Built for musicians who demand precision.
         </p>
-        <p style="margin-top: 20px;">© 2025 Master Tempo Pro. All rights reserved.</p>
-    </div>
+
+        <div class="button-group">
+            <a href="#" class="btn btn-primary">Coming to App Store</a>
+            <a href="/privacy.html" class="btn btn-secondary">Learn more</a>
+        </div>
+
+        <!-- App Preview -->
+        <div class="app-preview">
+            <div class="phone-frame">
+                <div class="screen">🎵</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <h2>Designed for professionals.</h2>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Sample-Accurate</h3>
+                    <p>Zero-latency timing powered by custom DSP technology for crystal-clear precision.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">📳</div>
+                    <h3>Haptic Feedback</h3>
+                    <p>Feel every beat with the Taptic Engine. Perfect for silent practice sessions.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Studio Sounds</h3>
+                    <p>Choose from Classic, Woodblock, Hi-Hat, and Snap. All generated in real-time.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Visual Feedback</h3>
+                    <p>Pulse rings or waveform display. Pick your style with dynamic color themes.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Background Play</h3>
+                    <p>Keeps running while you read sheet music or use other apps.</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">💾</div>
+                    <h3>Remembers Settings</h3>
+                    <p>Your BPM, sound, and theme preferences are saved automatically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Specs -->
+    <section class="specs">
+        <h2>Technical specifications.</h2>
+        <div class="specs-list">
+            <div class="spec-item">
+                <div class="spec-title">BPM Range</div>
+                <div class="spec-value">30 to 240 beats per minute</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-title">Time Signatures</div>
+                <div class="spec-value">2/4, 3/4, 4/4, 5/4, 6/8</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-title">Audio Engine</div>
+                <div class="spec-value">AVAudioEngine with custom DSP</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-title">Compatibility</div>
+                <div class="spec-value">Requires iOS 18.5 or later</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="mailto:support@master-tempo.com">Contact Support</a>
+        </div>
+        <p>© 2025 Master Tempo Pro. All rights reserved.</p>
+    </footer>
 </body>
 </html>
