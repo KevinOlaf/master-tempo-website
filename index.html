@@ -50,9 +50,20 @@
 
         /* Hero */
         .hero {
-            max-width: 980px;
-            margin: 40px auto 0;
+            max-width: 1400px;
+            margin: 40px auto;
             padding: 0 5%;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-text {
             text-align: center;
         }
 
@@ -68,14 +79,13 @@
             font-size: 1.5em;
             color: #6e6e73;
             font-weight: 400;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .hero .description {
             font-size: 1.1em;
             color: #6e6e73;
-            max-width: 650px;
-            margin: 0 auto 30px;
+            margin-bottom: 30px;
             line-height: 1.6;
         }
 
@@ -85,7 +95,6 @@
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 40px;
         }
 
         .btn {
@@ -118,10 +127,33 @@
             color: white;
         }
 
+        /* Key Features List */
+        .key-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .key-features li {
+            padding: 12px 0;
+            color: #1d1d1f;
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .key-features li::before {
+            content: "✓";
+            color: #0071e3;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
         /* App Preview */
         .app-preview {
-            max-width: 380px;
-            margin: 0 auto 60px;
+            max-width: 400px;
+            margin: 0 auto;
             position: relative;
         }
 
@@ -251,7 +283,37 @@
             font-size: 0.85em;
         }
 
-        /* Responsive */
+        /* Responsive - Desktop 2-column layout */
+        @media (min-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr 1.2fr;
+                gap: 80px;
+            }
+
+            .hero-text {
+                text-align: left;
+            }
+
+            .button-group {
+                justify-content: flex-start;
+            }
+
+            .app-preview {
+                margin: 0;
+            }
+
+            .key-features {
+                max-width: 500px;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1023px) {
+            .hero h1 {
+                font-size: 3em;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5em;
@@ -290,6 +352,10 @@
                 width: 100%;
                 max-width: 300px;
             }
+
+            .key-features li {
+                font-size: 0.95em;
+            }
         }
     </style>
 </head>
@@ -305,22 +371,35 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Precision meets simplicity.</h1>
-        <p class="subtitle">The professional metronome for iOS.</p>
-        <p class="description">
-            Master Tempo Pro delivers sample-accurate timing with haptic feedback
-            and beautiful visualizations. Built for musicians who demand precision.
-        </p>
+        <div class="hero-content">
+            <!-- App Preview (Left on desktop) -->
+            <div class="app-preview">
+                <div class="phone-frame">
+                    <div class="screen">🎵</div>
+                </div>
+            </div>
 
-        <div class="button-group">
-            <a href="#" class="btn btn-primary">Coming to App Store</a>
-            <a href="/privacy.html" class="btn btn-secondary">Learn more</a>
-        </div>
+            <!-- Hero Text (Right on desktop) -->
+            <div class="hero-text">
+                <h1>Precision meets simplicity.</h1>
+                <p class="subtitle">The professional metronome for iOS.</p>
+                <p class="description">
+                    Master Tempo Pro delivers sample-accurate timing with haptic feedback
+                    and beautiful visualizations. Built for musicians who demand precision.
+                </p>
 
-        <!-- App Preview -->
-        <div class="app-preview">
-            <div class="phone-frame">
-                <div class="screen">🎵</div>
+                <ul class="key-features">
+                    <li>Sample-accurate timing with zero latency</li>
+                    <li>Haptic feedback for every beat</li>
+                    <li>4 studio-grade sound modes</li>
+                    <li>Beautiful waveform visualizations</li>
+                    <li>Automatic settings memory</li>
+                </ul>
+
+                <div class="button-group">
+                    <a href="#" class="btn btn-primary">Coming to App Store</a>
+                    <a href="/privacy.html" class="btn btn-secondary">Learn more</a>
+                </div>
             </div>
         </div>
     </section>
