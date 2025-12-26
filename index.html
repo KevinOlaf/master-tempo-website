@@ -175,8 +175,9 @@
         .screen video {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
+            background: #000;
         }
 
         .video-placeholder {
@@ -188,6 +189,7 @@
             background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
             color: white;
             font-size: 3em;
+            z-index: -1;
         }
 
         /* Features */
