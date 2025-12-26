@@ -165,12 +165,27 @@
         }
 
         .screen {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+            background: #000;
             border-radius: 35px;
             aspect-ratio: 9/19.5;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
             color: white;
             font-size: 3em;
         }
@@ -375,7 +390,14 @@
             <!-- App Preview (Left on desktop) -->
             <div class="app-preview">
                 <div class="phone-frame">
-                    <div class="screen">🎵</div>
+                    <div class="screen">
+                        <!-- Replace 'demo.mp4' with your app screen recording -->
+                        <video autoplay loop muted playsinline>
+                            <source src="demo.mp4" type="video/mp4">
+                        </video>
+                        <!-- Fallback placeholder if video not found -->
+                        <div class="video-placeholder">🎵</div>
+                    </div>
                 </div>
             </div>
 
